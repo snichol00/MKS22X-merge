@@ -25,15 +25,33 @@ public class Merge{
     //break arrays even further
     mergesort(left, 0, left.length - 1);
     mergesort(right, p, right.length - 1);
-    for (int idx = 0; idx < hi; idx++){
-      if (left[idx] < right[idx]){
-        data[2 * idx] = left[idx];
-        data[2 * idx + 1] = right[idx];
+    //keeps track of the left and right indices
+    int lidx = 0;
+    int ridx = 0;
+    //loops through data to store sorted left and right arrays
+    while (idx < hi && lidx < left.length && ridx < right.length){
+      if (left[lidx] < right[ridx]){
+        data[idx] = left[lidx];
+        lidx++;
+        idx++
+        //data[2 * idx + 1] = right[idx];
       }
-      else{
-        data[2 * idx] = right[idx];
-        data[2 * idx + 1] = left[idx];
+      if (right[ridx] < left[lidx]){
+        data[idx] = right[ridx];
+        ridx++;
+        idx++;
+        //data[2 * idx + 1] = left[idx];
       }
+    }
+    while(lidx < left.length){
+      data[idx] = left[lidx];
+      lidx++;
+      idx++;
+    }
+    while(ridx < right.length){
+      data[idx] = right[ridx];
+      ridx++;
+      idx++;
     }
   }
 }
