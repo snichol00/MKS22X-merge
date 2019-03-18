@@ -25,7 +25,15 @@ public class Merge{
     //break arrays even further
     mergesort(left, 0, left.length - 1);
     mergesort(right, p, right.length - 1);
-
+    for (int idx = 0; idx < hi; idx++){
+      if (left[idx] < right[idx]){
+        data[2 * idx] = left[idx];
+        data[2 * idx + 1] = right[idx];
+      }
+      else{
+        data[2 * idx] = right[idx];
+        data[2 * idx + 1] = left[idx];
+      }
     }
   }
 }
