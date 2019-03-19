@@ -29,29 +29,33 @@ public class Merge{
     int lidx = 0;
     int ridx = 0;
     //loops through data to store sorted left and right arrays
-    while (idx < hi && lidx < left.length && ridx < right.length){
-      if (left[lidx] < right[ridx]){
-        data[idx] = left[lidx];
-        lidx++;
-        idx++
-        //data[2 * idx + 1] = right[idx];
+    while (idx < hi){
+      try{
+        if (left[lidx] < right[ridx]){
+          data[idx] = left[lidx];
+          lidx++;
+          idx++
+          //data[2 * idx + 1] = right[idx];
+        }
+        if (right[ridx] < left[lidx]){
+          data[idx] = right[ridx];
+          ridx++;
+          idx++;
+          //data[2 * idx + 1] = left[idx];
+        }
       }
-      if (right[ridx] < left[lidx]){
-        data[idx] = right[ridx];
-        ridx++;
-        idx++;
-        //data[2 * idx + 1] = left[idx];
+      catch(IndexOutOfBoundsException e){
+        while(lidx < left.length){
+          data[idx] = left[lidx];
+          lidx++;
+          idx++;
+        }
+        while(ridx < right.length){
+          data[idx] = right[ridx];
+          ridx++;
+          idx++;
+        }
       }
-    }
-    while(lidx < left.length){
-      data[idx] = left[lidx];
-      lidx++;
-      idx++;
-    }
-    while(ridx < right.length){
-      data[idx] = right[ridx];
-      ridx++;
-      idx++;
     }
   }
 }
