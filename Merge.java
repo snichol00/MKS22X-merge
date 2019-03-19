@@ -11,32 +11,21 @@ public class Merge{
     //if parameters unacceptable, stop method
     if (lo < hi){
 
-    /*
-    //make pivot the middle integer
-    int p = (lo + hi) / 2;
-
-    //make make left and right sides of pivot
-    int[] left = new int[data.length / 2];
-    //if an odd length, right side will be larger
-    int[] right = new int[data.length - left.length];
-    //fill left and right arrays
-    for (int x = 0; x < left.length; x++){
-      left[x] = data[x];
-    }
-    for (int x = 0; x < right.length; x++){
-      right[x] = data[x + p];
-    }
-    */
-    
     int p;
+    //make pivot the middle integer
     if (data.length % 2 == 0){
-        p = (data.length / 2); // so in array of size 4, pivot will be index 2
+      p = (lo + hi) / 2;
     }
     else{
-        p = (data.length / 2) + 1; // in array of size 5, pivot witll be index 3 (right will be shorter than left by 1)
+      //makes left side bigger if odd
+      p = (lo + hi) / 2 + 1;
     }
+
+    //make make left and right sides of pivot
+
     int[] left = Arrays.copyOfRange(data, lo, p); //pivot is excluded
-    int[] right = Arrays.copyOfRange(data, p, (hi+1)); //pivot included
+    int[] right = Arrays.copyOfRange(data, p, hi); //pivot included
+
     //break arrays even further
     mergesort(left, 0, left.length - 1);
     mergesort(right, 0, right.length - 1);
@@ -77,7 +66,7 @@ public class Merge{
   }
   }
 
-  public static void insertionsort(data, lo, hi){
+  public static void insertionsort(int[] data, int lo, int hi){
     for (int x = lo + 1; x <= hi; x++){
       int xval = data[x];
       int y = x - 1;
