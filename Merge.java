@@ -11,20 +11,21 @@ public class Merge{
     //if parameters unacceptable, stop method
     if (lo < hi){
 
-    int p;
-    //make pivot the middle integer
-    if (data.length % 2 == 0){
-      p = (lo + hi) / 2;
-    }
-    else{
-      //makes left side bigger if odd
-      p = (lo + hi) / 2 + 1;
-    }
+      int p;
+      //make pivot the middle integer
+      if (data.length % 2 == 0){
+        p = data.length / 2;
+      }
+      else{
+        //makes left side bigger if odd
+        p = data.length / 2 + 1;
+      }
 
-    //make make left and right sides of pivot
+      //make make left and right sides of pivot
 
-    int[] left = Arrays.copyOfRange(data, lo, p); //pivot is excluded
-    int[] right = Arrays.copyOfRange(data, p, hi); //pivot included
+      int[] left = Arrays.copyOfRange(data, lo, p); //pivot is excluded
+      int[] right = Arrays.copyOfRange(data, p, hi + 1); //pivot included
+
 
     //break arrays even further
     mergesort(left, 0, left.length - 1);
