@@ -26,8 +26,8 @@ public class Merge{
 
       //make make left and right sides of pivot
 
-      int[] left = Arrays.copyOfRange(data, lo, p); //pivot is excluded
-      int[] right = Arrays.copyOfRange(data, p, hi + 1); //pivot included
+      int[] left = Arrays.copyOfRange(data, lo, p);
+      int[] right = Arrays.copyOfRange(data, p, hi + 1); 
 
 
     //break arrays even further
