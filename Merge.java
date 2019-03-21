@@ -10,7 +10,10 @@ public class Merge{
   public static void mergesort(int[]data, int lo, int hi){
     //if parameters unacceptable, stop method
     if (lo < hi){
-
+      if (data.length < 43){
+        insertionsort(data, lo, hi);
+      }
+      else{
       int p;
       //make pivot the middle integer
       if (data.length % 2 == 0){
@@ -64,6 +67,7 @@ public class Merge{
         }
       }
     }
+  }
   }
   }
 
