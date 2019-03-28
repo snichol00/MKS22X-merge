@@ -3,32 +3,30 @@ import java.util.Arrays;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
-    mergesort(data, 0, data.length - 1);
+    mergesort(data, 0, data.length);
   }
 
   //helper
   public static void mergesort(int[]data, int lo, int hi){
     //if parameters unacceptable, stop method
-    if (lo < hi){
-      if (data.length < 43){
+    if (lo >= hi){
+      return;
+    }
+    if (data.length < 30){
         insertionsort(data, lo, hi);
-      }
-      else{
-      int p;
-      //make pivot the middle integer
-      if (data.length % 2 == 0){
-        p = data.length / 2;
-      }
-      else{
-        //makes left side bigger if odd
-        p = data.length / 2 + 1;
-      }
-
-      //make make left and right sides of pivot
-
-      int[] left = Arrays.copyOfRange(data, lo, p);
-      int[] right = Arrays.copyOfRange(data, p, hi + 1); 
-
+    }
+    //make pivot the middle integer
+    int p = data.length / 2;
+    //make make left and right sides of pivot
+    int[] left = new int[p];
+    int[] right = new int[data.length - p];
+    //fill left and right arrays
+    for (int x = 0; x < left.length; x++){
+      left[x] = data[x];
+    }
+    for (int x = 0; x < right.length; x++){
+      right[x] = data[x + p];
+    }
 
     //break arrays even further
     mergesort(left, 0, left.length - 1);
@@ -40,7 +38,16 @@ public class Merge{
     int idx = 0;
     //loops through data to store sorted left and right arrays
     while (idx < data.length){
-      try{
+      if (lidx < left.length){
+        data[idx] = left[lidx];
+        lidx++;
+        idx++;
+      }
+      else if (ridx < right.length){
+        data[idx] = right[ridx];
+        ridx++;
+        idx++;
+      }
         if (left[lidx] < right[ridx]){
           data[idx] = left[lidx];
           lidx++;
@@ -54,19 +61,7 @@ public class Merge{
           //data[2 * idx + 1] = left[idx];
         }
       }
-      catch(ArrayIndexOutOfBoundsException e){
-        if (lidx < left.length){
-          data[idx] = left[lidx];
-          lidx++;
-          idx++;
-        }
-        else if (ridx < right.length){
-          data[idx] = right[ridx];
-          ridx++;
-          idx++;
-        }
-      }
-    }
+  //  }
   }
   }
   }
