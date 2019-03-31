@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.*;
 
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
@@ -10,7 +11,7 @@ public class Merge{
   public static void mergesort(int[]data, int lo, int hi){
     //if parameters unacceptable, stop method
     if (lo < hi){
-      if (data.length < 30){
+      if (data.length < 43){
         insertionsort(data, lo, hi);
       }
       else{
@@ -80,5 +81,11 @@ public class Merge{
       }
       data[y+1] = xval;
     }
+  }
+
+  public static void main(String[] args) {
+    int[] data = {0, -1, 4, -20, 10000, 5, 7};
+    mergesort(data);
+    System.out.println(Arrays.toString(data));
   }
 }
