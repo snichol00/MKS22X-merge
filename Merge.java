@@ -86,6 +86,6 @@ public class Merge{
   public static void main(String[] args) {
     int[] data = {0, -1, 4, -20, 10000, 5, 7};
     mergesort(data);
-    System.out.println(Arrays.toString(data));
+    //System.out.println(Arrays.toString(data));
   }
 }
